@@ -1,0 +1,21 @@
+{
+  "name": "locker-lab-report-site",
+  "version": "1.0.0",
+  "description": "DeepSeek Harness 三层上下文工程与记忆管理实践报告",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "context-engineering",
+    "software-architecture"
+  ],
+  "author": "VincentZyu233",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.5.0"
+  }
+}

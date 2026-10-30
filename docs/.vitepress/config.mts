@@ -6,6 +6,11 @@ export default defineConfig({
   base: process.env.BASE_URL || '/locker-lab-context-report/',
   cleanUrls: true,
   lastUpdated: true,
+  head: [
+    ['link', { rel: 'icon', type: 'image/png', href: '/locker-lab-context-report/favicon.png' }],
+    ['link', { rel: 'icon', type: 'image/x-icon', href: '/locker-lab-context-report/favicon.ico' }],
+    ['link', { rel: 'shortcut icon', href: '/locker-lab-context-report/favicon.ico' }]
+  ],
   markdown: {
     lineNumbers: true,
     image: {
@@ -14,7 +19,7 @@ export default defineConfig({
   },
   themeConfig: {
     siteTitle: 'LockerLab Context Governance',
-    logo: '/assets/00a-右下角小肥鱼插件彩蛋捏.png',
+    logo: '/logo.png',
     nav: [
       { text: '首页', link: '/' },
       { text: '报告全文', link: '/full-report' },

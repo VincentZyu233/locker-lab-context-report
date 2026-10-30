@@ -1,6 +1,8 @@
 import { defineConfig } from 'vitepress';
+import { withMermaid } from 'vitepress-plugin-mermaid';
 
-export default defineConfig({
+export default withMermaid(
+  defineConfig({
   title: 'LockerLab 上下文工程报告',
   description: '《软件设计与体系结构》第3章：DeepSeek Harness 三层上下文工程与高效记忆管理实践报告',
   base: process.env.BASE_URL || '/locker-lab-context-report/',
@@ -69,4 +71,5 @@ export default defineConfig({
       provider: 'local'
     }
   }
-});
+})
+);

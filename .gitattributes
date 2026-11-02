@@ -1,18 +1,23 @@
 # GitHub Linguist 语言统计重写规则
-# 默认情况下 GitHub 将 Markdown 视为 documentation 并不计入 Languages 统计条
-# 显式声明使得 Markdown, TypeScript, CSS, YAML, JSON 均被纳入语言统计分析
-
+# 强制将 Markdown 纳入 GitHub 语言统计
 *.md linguist-detectable=true
 *.md linguist-documentation=false
+*.md linguist-language=Markdown
 
+# 显式统计 TypeScript 与 CSS
 *.ts linguist-detectable=true
+*.ts linguist-language=TypeScript
 *.mts linguist-detectable=true
-*.js linguist-detectable=true
-*.mjs linguist-detectable=true
+*.mts linguist-language=TypeScript
+
 *.css linguist-detectable=true
+*.css linguist-language=CSS
+
 *.json linguist-detectable=true
+*.json linguist-language=JSON
+
 *.yml linguist-detectable=true
 *.yaml linguist-detectable=true
 
-# 标记锁定文件为自动生成，避免干扰纯代码统计
+# 忽略打包生成的锁文件
 package-lock.json linguist-generated=true

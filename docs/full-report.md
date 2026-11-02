@@ -53,21 +53,21 @@ DSH 框架通过将 Agent 的知识输入严格划分为三层，解决了大型
 
 ```mermaid
 flowchart TD
-    subgraph Layer1 ["1. 指令层 (Instruction Layer)"]
-        L1_Desc["载体：AGENTS.md / 目录级 AGENTS.md / AGENTS.local.md<br>生命周期：请求前由框架自动拼装注入 System Prompt<br>失效机制：受 64KB 预算硬截断；进入深层目录增量刷新"]
+    subgraph Layer1["1. 指令层 (Instruction Layer)"]
+        L1_Desc["载体：AGENTS.md / 目录级 AGENTS.md / AGENTS.local.md<br/>生命周期：请求前由框架自动拼装注入 System Prompt<br/>失效机制：受 64KB 预算硬截断；进入深层目录增量刷新"]
     end
 
-    subgraph Layer2 ["2. 资产层 (Asset Layer)"]
-        L2_Desc["载体：docs/ (ADR, MDS, TLCD) + .dsh/skills/<br>生命周期：静态落盘，以权威基线索引与 Frontmatter 暴露<br>失效机制：只暴露元数据，正文按需加载；代码/文件变更即失效"]
+    subgraph Layer2["2. 资产层 (Asset Layer)"]
+        L2_Desc["载体：docs/ 架构文档 + .dsh/skills/<br/>生命周期：静态落盘，以权威基线索引与 Frontmatter 暴露<br/>失效机制：只暴露元数据，正文按需加载；代码变更即失效"]
     end
 
-    subgraph Layer3 ["3. 会话层 (Session Layer)"]
-        L3_Desc["载体：运行时 Append-Only Log 消息队列<br>生命周期：高流动性临时上下文，随会话结束而丢弃<br>失效机制：窗口溢出时有损压缩；重要结论必须沉淀回写资产层"]
+    subgraph Layer3["3. 会话层 (Session Layer)"]
+        L3_Desc["载体：运行时 Append-Only Log 消息队列<br/>生命周期：高流动性临时上下文，随会话结束而丢弃<br/>失效机制：窗口溢出时有损压缩；重要结论必须沉淀回写资产层"]
     end
 
-    Layer1 -.->|"规则引导"| Layer3
-    Layer2 -.->|"按需检索"| Layer3
-    Layer3 ==>"重要架构决策通过 ADR-002 回写"==> Layer2
+    Layer1 -.->|规则引导| Layer3
+    Layer2 -.->|按需检索| Layer3
+    Layer3 ==>|重要架构决策通过 ADR-002 回写| Layer2
 ```
 
 ### 2.1 指令层：生命周期、预算截断与增量刷新
